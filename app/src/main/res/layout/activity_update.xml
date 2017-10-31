@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.grzegorzmacko.mojemonety.ActivityUpdate">
+
+    <LinearLayout
+        android:layout_width="338dp"
+        android:layout_height="540dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="8dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/edit_kraj_pochodzenia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="17dp"
+                            android:ems="10"
+                            android:hint="Kraj Pochodzenia"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_rok"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+
+                        <EditText
+                            android:id="@+id/edit_rok"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="14dp"
+                            android:ems="10"
+                            android:hint="Rok"
+                            android:inputType="number"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_nominal"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/edit_waluta"
+                            style="@style/Widget.AppCompat.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:ems="10"
+                            android:hint="Waluta"
+                            android:inputType="textPersonName"
+                            android:selectAllOnFocus="false"
+                            android:singleLine="false"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_kraj_pochodzenia"
+                            app:layout_constraintLeft_toLeftOf="@+id/edit_kraj_pochodzenia"
+                            app:layout_constraintRight_toRightOf="@+id/edit_kraj_pochodzenia"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+
+                        <EditText
+                            android:id="@+id/edit_nominal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Nominal"
+                            android:inputType="number"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_ksztalt"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/edit_metal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:ems="10"
+                            android:hint="Metal"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_stop_metalu"
+                            app:layout_constraintLeft_toLeftOf="@+id/edit_stop_metalu"
+                            app:layout_constraintRight_toRightOf="@+id/edit_stop_metalu"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+
+                        <EditText
+                            android:id="@+id/edit_ksztalt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:ems="10"
+                            android:hint="Ksztalt"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_metal"
+                            app:layout_constraintLeft_toLeftOf="@+id/edit_metal"
+                            app:layout_constraintRight_toRightOf="@+id/edit_metal"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/edit_stop_metalu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="55dp"
+                            android:ems="10"
+                            android:hint="Stop Metalu"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_srednica"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintLeft_toLeftOf="@+id/edit_srednica"
+                            app:layout_constraintRight_toRightOf="@+id/edit_srednica"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+
+                        <EditText
+                            android:id="@+id/edit_waga"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Waga"
+                            android:inputType="number"
+                            tools:layout_editor_absoluteX="60dp"
+                            tools:layout_editor_absoluteY="381dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/edit_srednica"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Srednica"
+                            android:inputType="number"
+                            app:layout_constraintBottom_toTopOf="@+id/edit_wartosc"
+                            app:layout_constraintLeft_toLeftOf="@+id/edit_wartosc"
+                            app:layout_constraintRight_toRightOf="@+id/edit_wartosc"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+
+                        <EditText
+                            android:id="@+id/edit_wartosc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Wartosc"
+                            android:inputType="number"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintHorizontal_bias="0.502"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            tools:layout_constraintBottom_creator="1"
+                            tools:layout_constraintLeft_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/edit_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Id"
+                            android:inputType="textPersonName" />
+
+                        <Button
+                            android:id="@+id/button5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:onClick="updatedata"
+                            android:text="Update"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/button4"
+                            app:layout_constraintRight_toRightOf="@+id/textView3"
+                            tools:layout_constraintBaseline_creator="1"
+                            tools:layout_constraintRight_creator="1" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="23dp"
+                            android:layout_marginTop="25dp"
+                            android:text="Save"
+                            app:layout_constraintRight_toLeftOf="@+id/button5"
+                            app:layout_constraintTop_toBottomOf="@+id/editText3"
+                            tools:layout_constraintRight_creator="1"
+                            tools:layout_constraintTop_creator="1" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:textColor="#25383C"
+                    android:layout_marginBottom="28dp"
+                    android:layout_marginEnd="21dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_weight="0.01"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button3"
+                    tools:layout_constraintBottom_creator="1"
+                    tools:layout_constraintLeft_creator="1"
+                    tools:layout_constraintRight_creator="1"
+                    tools:layout_constraintTop_creator="1" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
