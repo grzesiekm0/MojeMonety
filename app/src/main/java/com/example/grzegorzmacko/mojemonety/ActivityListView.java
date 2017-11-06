@@ -27,56 +27,49 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ActivityListView extends AppCompatActivity {
-    bazadanych bd;
+
+    //Global variable ListView
     ListView listView;
-    SimpleCursorAdapter myCursorAdapter;
-    CursorAdapter CuAd;
-    Bundle wstecz;
-   // long id;
 
-    // Out custom adapter
-    //MySimpleArrayAdapter adapter;
-
-
-    // contains our listview items
+    // ArrayList contains our listview items
     ArrayList<moneta> listItems;
 
-    // database
-    FeedReaderDbHelper mDbHelper;
-
-    MySimpleArrayAdapter adapter;
-
-
-    // list of todo titles
+    //ArrayList to Simple Cursor Adapter
     ArrayList<moneta> newData;
 
-    // contains the id of the item we are about to delete
+    //Global variable for database connection
+    FeedReaderDbHelper mDbHelper;
+
+    //Global variable Simple Array Adapter
+    MySimpleArrayAdapter adapter;
+
+    // Contains the id of the item we are about to delete
     public int deleteItem;
     public int select_item;
 
-    // EditText field for adding new items to the list
-   // EditText editText2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
-
-      //  moneta mon = new moneta();
-
-         mDbHelper = new FeedReaderDbHelper(this);
         listView = (ListView) findViewById(R.id.myListView);
 
+        //Database class instance
+         mDbHelper = new FeedReaderDbHelper(this);
+
+        //Collect all the coins
         listItems = mDbHelper.getAllNotes();
 
+        //Create an ArrayList for MySimpleArrayAdapter
         newData = new ArrayList<moneta>();
 
-        // Assigning the title to our global property so we can access it
+        // Assigning coins to our global property so we can access it
         // later after certain actions (deleting/adding)
         for ( moneta mon : listItems) {
             newData.add(mon);
         }
 
+        //Create an adapter instance
          adapter = new MySimpleArrayAdapter(this, newData);
 
         // Assigning the adapter to ListView
@@ -84,7 +77,7 @@ public class ActivityListView extends AppCompatActivity {
 
 
 
-            // przekierowanie na widok z informacjami rekordu
+            // Click on the list, create a new view with details of the item.
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -93,6 +86,7 @@ public class ActivityListView extends AppCompatActivity {
                 Intent registerIntent = new Intent(ActivityListView.this,
                         ActivityItemInfo.class);
 
+                //Share id item
                 registerIntent.putExtra("_id", select_item);
                 startActivity(registerIntent);
 
@@ -100,11 +94,8 @@ public class ActivityListView extends AppCompatActivity {
             }
         });
 
-       // listView.setOnItemLongClickListener(myClickListener);
-       // populateListView();
 
-        // obsluga zdarzzenia dlugiego klikniecia
-        // w tym wypadku usuniecia z oknem AlertDialog
+        // Long click removes the item
         listView.setLongClickable(true);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -119,21 +110,15 @@ public class ActivityListView extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int whichButton) {
-                                        // Retrieving the note from our listItems
-                                        // property, which contains all notes from
-                                        // our database
-
-
-
+                                        //Retrieving the coin from our listItem property,
+                                        //which contains all coins from our database
                                         moneta mon = listItems.get(deleteItem);
 
-                                        // Deleting it from the ArrayList<string>
+                                        // Deleting it from the ArrayList<>
                                         // property which is linked to our adapter
                                         newData.remove(deleteItem);
 
-                                        // Deleting the note from our database
-                                       // mon.setWaluta("Grz");
-
+                                        // Deleting the coin from our database
                                         mDbHelper.removee(mon._id);
 
                                         // Tell the adapter to update the list view
@@ -161,38 +146,45 @@ public class ActivityListView extends AppCompatActivity {
 
     }
 
+    //Refresh ArrayAdapter onResume
     @Override
     public void onResume() {
         super.onResume();
-      //  moneta mon = new moneta();
-        // --------------------------------
-        newData.clear();
-// tu skonczylem
 
+        //Removing and retrieve all coins
+        newData.clear();
      listItems.addAll(odswiezArrayListAdaptera());
-        
-        adapter.notifyDataSetChanged();
 
+        // Tell the adapter to update the list view
+        // with the latest changes
+        adapter.notifyDataSetChanged();
     }
-// metoda odswiezajaca liste adaptera
+
+// refreshing method of list adapter
     public ArrayList<moneta> odswiezArrayListAdaptera(){
-        //pobranie do listy danych z bazy danych
+
+        //Collect all the coins of database
         listItems = mDbHelper.getAllNotes();
-        //wyczyszczenie listy uzywanej przez listview adapter
+
+        //Removing all coins from the ArrayList<>
+        // property which is linked to our adapter
         newData.clear();
-        //skopiowanie obiektow
+
+        //Object copying
         for ( moneta mon : listItems) {
             newData.add(mon);
         }
-        //zwrocenie zaktualizowanej listy
+        //Returning a refreshed array
         return newData;
     }
+
     // trzeba to po angielsku
 
     public static class MySimpleArrayAdapter extends ArrayAdapter<String> {
         private final Context context;
         private final ArrayList<moneta> values;
-        //custom  adapter ArrayList, w ktorym przechowuje obiekty "moneta"
+
+        //Custom  adapter ArrayList
         public MySimpleArrayAdapter(Context context, ArrayList objects) {
             super(context, R.layout.activity_item, objects);
 
@@ -202,37 +194,32 @@ public class ActivityListView extends AppCompatActivity {
         }
 
         /**
-         * Here we go and get our rowlayout.xml file and set the textview text.
+         * Here we go and get our activity_item.xml file and set the textview text.
          * This happens for every row in your listview.
          */
         @Override  // przysloneicie metody get view
         //w ktorym list view napelnia sie widokiem activity item
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            // assign the view we are converting to a local variable
+            // Assign the view we are converting to a local variable
             View v = convertView;
 
-            // first check to see if the view is null. if so, we have to inflate it.
+            // First check to see if the view is null. if so, we have to inflate it.
             // to inflate it basically means to render, or show, the view.
             if (v == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = inflater.inflate(R.layout.activity_item, null);
-
-
-
             }
 
-
-
-
-            // zaczepianie kontrolek
+            // Field to the object of the coin
             TextView textView = (TextView) v.findViewById(R.id.textViewIdd);
             TextView idd = (TextView) v.findViewById(R.id.textView10);
             TextView tq = (TextView) v.findViewById(R.id.textView6);
 
-                //uzyskanie odpowiedniego obiektu
+                //Download object
             moneta mon =  values.get(position);
 
+            //set field
             idd.setText(String.valueOf(mon.getId()));
             textView.setText(mon.getWaluta());
             tq.setText(mon.getKraj_pochodzenia());
@@ -244,6 +231,8 @@ public class ActivityListView extends AppCompatActivity {
           //  bd = new bazadanych(this);
             // populateListView();
 
+
+/*
             final FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(this);
 
            // SQLiteDatabase db = mDbHelper.getReadableDatabase();
@@ -269,14 +258,14 @@ public class ActivityListView extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-              /*  bd.Wyswietl().moveToPosition(position);
+                bd.Wyswietl().moveToPosition(position);
                 int rowId = bd.Wyswietl().getInt(bd.Wyswietl().getColumnIndexOrThrow("_id"));
 
                 Intent outData = new Intent();
 
                 setResult(Activity.RESULT_OK, outData);
                 finish();
-                */
+
 
 
 
@@ -291,14 +280,14 @@ public class ActivityListView extends AppCompatActivity {
 
 
 
-                    /*    // pokazanie wiecej informacji i wlasciwosci
+                        // pokazanie wiecej informacji i wlasciwosci
 
                     Intent registerIntent = new Intent(ActivityListView.this,
                             ActivityItem.class);
 
                     registerIntent.putExtra("_id", position);
                     startActivity(registerIntent);
-                    */
+
 
 
                     //Intent inten = new Intent(this, ActivityDodajMonete.class);
@@ -313,7 +302,7 @@ public class ActivityListView extends AppCompatActivity {
 
 
 
-/*
+
 
             listView.setOnClickListener(new AdapterView.OnItemClickListener() {
 
@@ -325,7 +314,9 @@ public class ActivityListView extends AppCompatActivity {
                    // intent.putExtra("item-identifier", id);
                    // startActivity(intent);
                 }
-            });*/
+            });
+
+            */
         }
 
 

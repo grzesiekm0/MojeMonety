@@ -129,7 +129,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
 
 
     /**
-     * //This method returns all notes from the database
+     * //This method returns all coins from the database
      */
     public ArrayList<moneta> getAllNotes() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -195,6 +195,9 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + FeedReaderContract.FeedEntry.TABLE_NAME + " WHERE " + FeedReaderContract.FeedEntry._ID
                 + "=" + id + "");
     }
+
+
+
 
 
 
