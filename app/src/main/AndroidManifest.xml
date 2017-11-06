@@ -21,7 +21,7 @@
         <activity android:name=".ActivityDelete" />
         <activity android:name=".ActivityUpdate" />
         <activity android:name=".ListDataActivity" />
-        <activity android:name=".ActivityListView" />
+        <activity android:name=".ListViewActivity" />
         <activity android:name=".ActivityItem" />
         <activity android:name=".ActivityItemInfo" />
         <activity android:name=".ActivityItemInfoEdit"></activity>

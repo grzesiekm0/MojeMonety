@@ -1,12 +1,9 @@
 package com.example.grzegorzmacko.mojemonety;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     //Buttons to turn on a new view.
     //Database view.
     public void btnNextActivity(View view){
-        Intent intent = new Intent(this, ActivityListView.class);
+        Intent intent = new Intent(this, ListViewActivity.class);
         startActivity(intent);
     }
 
