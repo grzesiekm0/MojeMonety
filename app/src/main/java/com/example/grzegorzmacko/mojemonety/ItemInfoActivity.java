@@ -1,22 +1,17 @@
 package com.example.grzegorzmacko.mojemonety;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ActivityItemInfo extends AppCompatActivity {
+public class ItemInfoActivity extends AppCompatActivity {
 
 
     //Variables fields, edit fields and more
@@ -105,67 +100,67 @@ public class ActivityItemInfo extends AppCompatActivity {
 
                 // Liking fields with xml file and seting ID, seting properties coin,
                 //seting properties ViewGroup elements and adding for view
-                 waluta = new EditText(ActivityItemInfo.this);
+                 waluta = new EditText(ItemInfoActivity.this);
                 waluta.setId(i);
                 waluta.setText(mon.getWaluta() + "");
                 LinearLayout.LayoutParams o = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(waluta, o);
 
-                 wartosc = new EditText(ActivityItemInfo.this);
+                 wartosc = new EditText(ItemInfoActivity.this);
                 wartosc.setId(++i);
                 wartosc.setText(mon.getWartosc() + "");
                 LinearLayout.LayoutParams u = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(wartosc, u);
 
-                rok = new EditText(ActivityItemInfo.this);
+                rok = new EditText(ItemInfoActivity.this);
                 rok.setId(++i);
                 rok.setText(mon.getRok() + "");
                 LinearLayout.LayoutParams y = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(rok, y);
 
-                ksztalt = new EditText(ActivityItemInfo.this);
+                ksztalt = new EditText(ItemInfoActivity.this);
                 ksztalt.setId(++i);
                 ksztalt.setText(mon.getKsztalt() + "");
                 LinearLayout.LayoutParams t = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(ksztalt, t);
 
-                metal = new EditText(ActivityItemInfo.this);
+                metal = new EditText(ItemInfoActivity.this);
                 metal.setId(++i);
                 metal.setText(mon.getMetal() + "");
                 LinearLayout.LayoutParams r = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(metal, r);
 
-                stop_metalu = new EditText(ActivityItemInfo.this);
+                stop_metalu = new EditText(ItemInfoActivity.this);
                 stop_metalu.setId(++i);
                 stop_metalu.setText(mon.getStop_metalu() + "");
                 LinearLayout.LayoutParams e = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(stop_metalu, e);
 
-                kraj_pochodzenia = new EditText(ActivityItemInfo.this);
+                kraj_pochodzenia = new EditText(ItemInfoActivity.this);
                 kraj_pochodzenia.setId(++i);
                 kraj_pochodzenia.setText(mon.getKraj_pochodzenia() + "");
                 LinearLayout.LayoutParams w = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(kraj_pochodzenia, w);
 
-                nominal = new EditText(ActivityItemInfo.this);
+                nominal = new EditText(ItemInfoActivity.this);
                 nominal.setId(++i);
                 nominal.setText(mon.getNominal() + "");
                 LinearLayout.LayoutParams q = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(nominal, q);
 
-                waga = new EditText(ActivityItemInfo.this);
+                waga = new EditText(ItemInfoActivity.this);
                 waga.setId(++i);
                 waga.setText(mon.getWaga() + "");
                 LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(waga, l);
 
-                srednica = new EditText(ActivityItemInfo.this);
+                srednica = new EditText(ItemInfoActivity.this);
                 srednica.setId(++i);
                 srednica.setText(mon.getSrednica() + "");
                 LinearLayout.LayoutParams k = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 rel.addView(srednica, k);
 
-                 mciv = new Button(ActivityItemInfo.this);
+                 mciv = new Button(ItemInfoActivity.this);
                 mciv.setId(++i);
                 mciv.setText("Dodaj");
                 LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -220,9 +215,9 @@ public class ActivityItemInfo extends AppCompatActivity {
 
                         // Displaying the toast message
                         if (itsok = true) {
-                            Toast.makeText(ActivityItemInfo.this, "ok", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ItemInfoActivity.this, "ok", Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(ActivityItemInfo.this, "not ok", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ItemInfoActivity.this, "not ok", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

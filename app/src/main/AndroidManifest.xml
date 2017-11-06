@@ -23,7 +23,7 @@
         <activity android:name=".ListDataActivity" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".ActivityItem" />
-        <activity android:name=".ActivityItemInfo" />
+        <activity android:name=".ItemInfoActivity" />
         <activity android:name=".ActivityItemInfoEdit"></activity>
     </application>
 

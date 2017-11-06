@@ -74,7 +74,7 @@ public class ListViewActivity extends AppCompatActivity {
                 select_item = position;
 
                 Intent registerIntent = new Intent(ListViewActivity.this,
-                        ActivityItemInfo.class);
+                        ItemInfoActivity.class);
 
                 //Share id item
                 registerIntent.putExtra("_id", select_item);
