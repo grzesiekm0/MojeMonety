@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnNextActivity3(View view){
-        Intent intent = new Intent(this, ActivityUpdate.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ActivityUpdate.class);
+        //startActivity(intent);
 
     }
 
     public void btnNextActivity4(View view){
-        Intent intent = new Intent(this, ActivityDelete.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ActivityDelete.class);
+        //startActivity(intent);
 
     }
 

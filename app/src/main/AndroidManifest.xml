@@ -17,10 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityDodajMonete" />
-        <activity android:name=".ActivityDelete" />
-        <activity android:name=".ActivityUpdate" />
         <activity android:name=".ListViewActivity" />
-        <activity android:name=".ActivityItem" />
         <activity android:name=".ItemInfoActivity" />
     </application>
 
