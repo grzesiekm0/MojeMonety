@@ -16,15 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityDatabaseView" />
         <activity android:name=".ActivityDodajMonete" />
         <activity android:name=".ActivityDelete" />
         <activity android:name=".ActivityUpdate" />
-        <activity android:name=".ListDataActivity" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".ActivityItem" />
         <activity android:name=".ItemInfoActivity" />
-        <activity android:name=".ActivityItemInfoEdit"></activity>
     </application>
 
 </manifest>
