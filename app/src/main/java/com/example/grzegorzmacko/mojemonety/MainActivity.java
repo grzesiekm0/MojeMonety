@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Adding a coin.
     public void btnNextActivity2(View view){
-        Intent intent = new Intent(this, ActivityDodajMonete.class);
+        Intent intent = new Intent(this, AddCoinActivity.class);
         startActivity(intent);
     }
 

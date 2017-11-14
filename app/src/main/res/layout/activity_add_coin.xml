@@ -16,6 +16,93 @@
             android:id="@+id/pole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editWaluta"
+                android:hint="Waluta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editRok"
+                android:hint="Rok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editWartosc"
+                android:hint="Wartosc (zl)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editSrednica"
+                android:hint="Srednica (mm)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editKrajPochodzenia"
+                android:hint="Kraj pochodzenia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editKsztalt"
+                android:hint="Ksztalt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editMetal"
+                android:hint="Metal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editStopMetalu"
+                android:hint="Stop metalu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editNominal"
+                android:hint="Nominal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editWaga"
+                android:hint="Waga (g)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/Submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+        </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
