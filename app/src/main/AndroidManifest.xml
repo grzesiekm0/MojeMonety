@@ -19,6 +19,7 @@
         <activity android:name=".ActivityDodajMonete" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".ItemInfoActivity" />
+        <activity android:name=".AddCoinActivity"></activity>
     </application>
 
 </manifest>
