@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -63,30 +64,42 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
      * //This method add a coin to the database
      */
     public boolean DodajMonetee(String waluta, Integer rok, String ksztalt, String metal,
-                                String stop_metalu, String kraj_pochodzenia, Integer nominal, Integer waga, Integer srednica, Integer wartosc) {
+                                String stop_metalu, String kraj_pochodzenia, Integer nominal,
+                                Integer waga, Integer srednica, Integer wartosc)
+    {
 
-        //Create and/or open a database that will be used for reading and writing
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues value = new ContentValues();
+            //Create and/or open a database that will be used for reading and writing
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues value = new ContentValues();
+            if(waluta == null || rok == null || ksztalt == null || metal ==null
+                    || stop_metalu == null || kraj_pochodzenia==null || nominal == null
+                    || waga == null || srednica == null || wartosc == null) {
 
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_WALUTA, waluta);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ROK, rok);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_KSZTALT, ksztalt);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_METAL, metal);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_STOP_METALU, stop_metalu);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_KRAJ_POCHODZENIA, kraj_pochodzenia);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_NOMINAL, nominal);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_WAGA, waga);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SREDNICA, srednica);
-        value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_WARTOSC, wartosc);
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!");
 
-        // Insert to database
-        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, value);
+            }
+        else{
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_WALUTA, waluta);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ROK, rok);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_KSZTALT, ksztalt);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_METAL, metal);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_STOP_METALU, stop_metalu);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_KRAJ_POCHODZENIA, kraj_pochodzenia);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_NOMINAL, nominal);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_WAGA, waga);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SREDNICA, srednica);
+                value.put(FeedReaderContract.FeedEntry.COLUMN_NAME_WARTOSC, wartosc);
 
-        if (newRowId == -1) {
-            return false;
-        } else
-            return true;
+            }
+            // Insert to database
+            long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, value);
+            // newRowId = -1;
+            if (newRowId == -1) {
+                return false;
+            } else{
+
+                return true;}
+
 
     }
 

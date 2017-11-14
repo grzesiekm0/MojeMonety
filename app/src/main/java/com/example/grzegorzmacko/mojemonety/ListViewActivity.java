@@ -71,15 +71,19 @@ public class ListViewActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                select_item = position;
 
-                Intent registerIntent = new Intent(ListViewActivity.this,
-                        ItemInfoActivity.class);
+                try {
+                    select_item = position;
 
-                //Share id item
-                registerIntent.putExtra("_id", select_item);
-                startActivity(registerIntent);
+                    Intent registerIntent = new Intent(ListViewActivity.this,
+                            ItemInfoActivity.class);
 
+                    //Share id item
+                    registerIntent.putExtra("_id", select_item);
+                    startActivity(registerIntent);
+                }catch(Exception e){
+                    System.err.print(e);
+                }
 
             }
         });
@@ -90,43 +94,46 @@ public class ListViewActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    deleteItem = position;
 
-                deleteItem = position;
+                    // Creating a new alert dialog to confirm the delete
+                    AlertDialog alert = new AlertDialog.Builder(ListViewActivity.this)
+                            .setTitle("Delete " + listItems.get(deleteItem).waluta)
+                            .setPositiveButton("Ok",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,
+                                                            int whichButton) {
+                                            //Retrieving the coin from our listItem property,
+                                            //which contains all coins from our database
+                                            moneta mon = listItems.get(deleteItem);
 
-                // Creating a new alert dialog to confirm the delete
-                AlertDialog alert = new AlertDialog.Builder(ListViewActivity.this)
-                        .setTitle("Delete " + listItems.get(deleteItem).waluta)
-                        .setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                                        int whichButton) {
-                                        //Retrieving the coin from our listItem property,
-                                        //which contains all coins from our database
-                                        moneta mon = listItems.get(deleteItem);
+                                            // Deleting it from the ArrayList<>
+                                            // property which is linked to our adapter
+                                            newData.remove(deleteItem);
 
-                                        // Deleting it from the ArrayList<>
-                                        // property which is linked to our adapter
-                                        newData.remove(deleteItem);
+                                            // Deleting the coin from our database
+                                            mDbHelper.removee(mon._id);
 
-                                        // Deleting the coin from our database
-                                        mDbHelper.removee(mon._id);
+                                            // Tell the adapter to update the list view
+                                            // with the latest changes
+                                            adapter.notifyDataSetChanged();
 
-                                        // Tell the adapter to update the list view
-                                        // with the latest changes
-                                        adapter.notifyDataSetChanged();
-
-                                        dialog.dismiss();
-                                    }
-                                })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                                        int whichButton) {
-                                        // When you press cancel, just close the
-                                        // dialog
-                                        dialog.cancel();
-                                    }
-                                }).show();
+                                            dialog.dismiss();
+                                        }
+                                    })
+                            .setNegativeButton("Cancel",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,
+                                                            int whichButton) {
+                                            // When you press cancel, just close the
+                                            // dialog
+                                            dialog.cancel();
+                                        }
+                                    }).show();
+                }catch(Exception e){
+                    System.err.print(e);
+                }
 
                 return false;
 
@@ -140,32 +147,39 @@ public class ListViewActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        try {
+            //Removing and retrieve all coins
+            newData.clear();
+            listItems.addAll(odswiezArrayListAdaptera());
 
-        //Removing and retrieve all coins
-        newData.clear();
-        listItems.addAll(odswiezArrayListAdaptera());
-
-        // Tell the adapter to update the list view
-        // with the latest changes
-        adapter.notifyDataSetChanged();
+            // Tell the adapter to update the list view
+            // with the latest changes
+            adapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            System.err.print(e);
+        }
     }
 
     // refreshing method of list adapter
     public ArrayList<moneta> odswiezArrayListAdaptera() {
+        try {
+            //Collect all the coins of database
+            listItems = mDbHelper.getAllNotes();
 
-        //Collect all the coins of database
-        listItems = mDbHelper.getAllNotes();
+            //Removing all coins from the ArrayList<>
+            // property which is linked to our adapter
+            newData.clear();
 
-        //Removing all coins from the ArrayList<>
-        // property which is linked to our adapter
-        newData.clear();
-
-        //Object copying
-        for (moneta mon : listItems) {
-            newData.add(mon);
+            //Object copying
+            for (moneta mon : listItems) {
+                newData.add(mon);
+            }
+        } catch (Exception e) {
+            System.err.println(e);
         }
         //Returning a refreshed array
         return newData;
+
     }
 
 
@@ -191,26 +205,31 @@ public class ListViewActivity extends AppCompatActivity {
 
             // Assign the view we are converting to a local variable
             View v = convertView;
+            try {
 
-            // First check to see if the view is null. if so, we have to inflate it.
-            // to inflate it basically means to render, or show, the view.
-            if (v == null) {
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = inflater.inflate(R.layout.activity_item, null);
+
+                // First check to see if the view is null. if so, we have to inflate it.
+                // to inflate it basically means to render, or show, the view.
+                if (v == null) {
+                    LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    v = inflater.inflate(R.layout.activity_item, null);
+
+                    // Field to the object of the coin
+                    TextView textView = (TextView) v.findViewById(R.id.textViewIdd);
+                    TextView idd = (TextView) v.findViewById(R.id.textView10);
+                    TextView tq = (TextView) v.findViewById(R.id.textView6);
+
+                    //Download object
+                    moneta mon = values.get(position);
+
+                    //set field
+                    idd.setText(String.valueOf(mon.getId()));
+                    textView.setText(mon.getWaluta());
+                    tq.setText(mon.getKraj_pochodzenia());
+                }
+            } catch (Exception e) {
+                System.err.println(e);
             }
-
-            // Field to the object of the coin
-            TextView textView = (TextView) v.findViewById(R.id.textViewIdd);
-            TextView idd = (TextView) v.findViewById(R.id.textView10);
-            TextView tq = (TextView) v.findViewById(R.id.textView6);
-
-            //Download object
-            moneta mon = values.get(position);
-
-            //set field
-            idd.setText(String.valueOf(mon.getId()));
-            textView.setText(mon.getWaluta());
-            tq.setText(mon.getKraj_pochodzenia());
             return v;
         }
     }
